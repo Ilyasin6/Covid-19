@@ -49,7 +49,6 @@ const options = {
 					display: false
 				},
 				ticks: {
-					stepSize: 100000,
 					callback: function(value, index, values) {
 						return numeral(value).format('0a');
 					}
@@ -59,7 +58,7 @@ const options = {
 	}
 };
 
-function LineGraph() {
+function LineGraph({ country = 'Worldwide' }) {
 	const [ data, setData ] = useState([]);
 	const [ type, setType ] = useState('cases');
 
@@ -82,13 +81,24 @@ function LineGraph() {
 	useEffect(
 		() => {
 			const fetchData = async () => {
-				await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=200')
+				const url =
+
+						country ===
+						'Worldwide' ? 'https://disease.sh/v3/covid-19/historical/all?lastdays=200' :
+						`https://disease.sh/v3/covid-19/historical/${country}?lastdays=200
+				`;
+
+				await fetch(url)
 					.then((response) => {
 						return response.json();
 					})
 					.then((data) => {
-						console.log(data);
-						const chartData = generateChartData(data, type);
+						//console.log(data);
+
+						const chartData =
+
+								country === 'Worldwide' ? generateChartData(data, type) :
+								generateChartData(data.timeline, type);
 						setData(chartData);
 					});
 			};
@@ -107,7 +117,7 @@ function LineGraph() {
 	return (
 		<div className="LineGraph">
 			<div className="LineGraph__title">
-				<h3> Worldwide New </h3>
+				<h3> {country} New </h3>
 				<FormControl className={classes.formControl}>
 					<Select value={type} onChange={onTypeChange}>
 						<MenuItem value="cases"> Cases </MenuItem>
