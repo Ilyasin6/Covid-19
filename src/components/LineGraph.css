@@ -1,0 +1,14 @@
+.LineGraph {
+	margin-top: .5rem;
+	/* margin-bottom: .1rem; */
+}
+
+.LineGraph__title {
+	margin-bottom: .5rem;
+	display: flex;
+	align-items: center;
+}
+
+.LineGraph__title h3 {
+	padding-bottom: 5px;
+}

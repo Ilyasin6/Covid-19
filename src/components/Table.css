@@ -1,0 +1,47 @@
+/* ScrollBar apearence */
+::-webkit-scrollbar {
+	width: .4rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.096);
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(68, 68, 68, 0.384);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(68, 68, 68, 0.2);
+}
+.table {
+	margin-top: 1rem;
+	overflow-y: scroll;
+	height: 400px;
+	color: #6a5d5d;
+	margin-bottom: 1rem;
+}
+
+tbody {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+tbody tr {
+	display: flex;
+	justify-content: space-between;
+}
+
+tbody td {
+	padding: .5rem;
+}
+
+.table tr:nth-of-type(odd) {
+	background-color: #f3f2f8;
+}
