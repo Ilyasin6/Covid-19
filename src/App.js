@@ -140,7 +140,7 @@ function App() {
 						/>
 					</div>
 
-					<div>
+					<div style={{ display: 'flex' }}>
 						<IconButton
 							aria-label="Light Theme"
 							onClick={onChangeTheme}
