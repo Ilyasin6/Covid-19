@@ -10,16 +10,16 @@ function ChangeView({ center, zoom }) {
 	return null;
 }
 
-function Map({ center, zoom, countries, casesType }) {
+function Map({ center, zoom, countries, casesType, theme }) {
 	return (
-		<div className="map">
+		<div className={`map ${theme === 'dark' && 'dark-theme'}`}>
 			<MapContainer center={center} zoom={zoom}>
 				<ChangeView center={center} zoom={zoom} />
 				<TileLayer
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 				/>
-				<CircleMap data={countries} casesType={casesType} />
+				<CircleMap data={countries} casesType={casesType} theme={theme} />
 				{/* {showDataOnMap(countries, zoom, casesType)} */}
 			</MapContainer>
 		</div>

@@ -5,6 +5,10 @@
 	transition: all .5s !important;
 }
 
+.infoBox.dark-theme {
+	background-color: #010b44 !important;
+}
+
 .infoBox:hover {
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -48,6 +52,10 @@
 	font-weight: 700 !important;
 	font-size: 1rem !important;
 	margin-top: 10px !important;
+}
+
+.infoBox__total.dark-theme {
+	color: lightgrey;
 }
 
 @media (max-width: 500px) {

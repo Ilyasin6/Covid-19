@@ -2,9 +2,9 @@ import React from 'react';
 import './Table.css';
 import numeral from 'numeral';
 
-function Table({ countries }) {
+function Table({ countries, theme }) {
 	return (
-		<div className="table">
+		<div className={`table ${theme === 'dark' && 'dark-theme'}`}>
 			<table>
 				<tbody>
 					{countries.map(({ country, cases }, i) => {

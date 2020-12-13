@@ -2,6 +2,7 @@ import React from 'react';
 import { Circle, Popup } from 'react-leaflet';
 import numeral from 'numeral';
 import LineGraph from './LineGraph';
+import styled from 'styled-components';
 
 const casesTypeColors = {
 	cases: {
@@ -24,7 +25,15 @@ const casesTypeColors = {
 	}
 };
 
-function CircleMap({ data, casesType }) {
+function CircleMap({ data, casesType, theme }) {
+	const StyledPop = styled(Popup)`
+  
+  .leaflet-popup-content-wrapper {
+	${theme === 'dark' && 'background-color: #010b44;'}
+    
+  }
+`;
+
 	return data.map((country, i) => {
 		//console.log(country);
 		// console.log(casesTypeColors[casesType].hex);
@@ -39,9 +48,9 @@ function CircleMap({ data, casesType }) {
 					Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
 				}
 			>
-				<Popup>
-					<div className="info-container">
-						<div className="info-name">
+				<StyledPop className="popup">
+					<div className={`info-container ${theme === 'dark' && 'dark-theme'}`}>
+						<div className={`info-name ${theme === 'dark' && 'dark-theme'}`}>
 							<div>{country.country}</div>
 							<div
 								className="info-flag"
@@ -61,10 +70,10 @@ function CircleMap({ data, casesType }) {
 							Deaths: {numeral(country.deaths).format('0,0')}
 						</div>
 						<div>
-							<LineGraph country={country.country} />
+							<LineGraph country={country.country} theme={theme} />
 						</div>
 					</div>
-				</Popup>
+				</StyledPop>
 			</Circle>
 		);
 	});

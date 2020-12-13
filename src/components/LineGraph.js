@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
 	formControl: {
 		margin: theme.spacing(1),
 		minWidth: 120
+	},
+	select: {
+		color: 'white'
 	}
 }));
 
@@ -40,7 +43,8 @@ const options = {
 				time: {
 					format: 'MM/DD/YY',
 					tooltipFormat: 'll'
-				}
+				},
+				ticks: { fontColor: 'gray' }
 			}
 		],
 		yAxes: [
@@ -51,14 +55,15 @@ const options = {
 				ticks: {
 					callback: function(value, index, values) {
 						return numeral(value).format('0a');
-					}
+					},
+					fontColor: 'gray'
 				}
 			}
 		]
 	}
 };
 
-function LineGraph({ country = 'Worldwide' }) {
+function LineGraph({ country = 'Worldwide', theme }) {
 	const [ data, setData ] = useState([]);
 	const [ type, setType ] = useState('cases');
 
@@ -119,7 +124,11 @@ function LineGraph({ country = 'Worldwide' }) {
 			<div className="LineGraph__title">
 				<h3> {country} New </h3>
 				<FormControl className={classes.formControl}>
-					<Select value={type} onChange={onTypeChange}>
+					<Select
+						value={type}
+						onChange={onTypeChange}
+						className={theme === 'dark' && classes.select}
+					>
 						<MenuItem value="cases"> Cases </MenuItem>
 						<MenuItem value="deaths"> Deaths </MenuItem>
 						<MenuItem value="recovered"> Recovered </MenuItem>

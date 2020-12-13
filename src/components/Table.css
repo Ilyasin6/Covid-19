@@ -17,12 +17,17 @@
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(68, 68, 68, 0.2);
 }
+
 .table {
 	margin-top: 1rem;
 	overflow-y: scroll;
 	height: 400px;
 	color: #6a5d5d;
 	margin-bottom: 1rem;
+}
+
+.table.dark-theme {
+	color: #bbbbbb;
 }
 
 table {
@@ -47,4 +52,8 @@ tbody td {
 
 .table tr:nth-of-type(odd) {
 	background-color: #f3f2f8;
+}
+
+.table.dark-theme tr:nth-of-type(odd) {
+	background-color: #b6b6b62a;
 }

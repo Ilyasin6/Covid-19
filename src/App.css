@@ -12,6 +12,11 @@ body {
 	padding: 1.2rem;
 }
 
+.app.dark-theme {
+	background-color: #010b44e0;
+	color: white !important;
+}
+
 .app__header {
 	display: flex;
 	align-items: center;
@@ -26,6 +31,19 @@ body {
 	background-repeat: no-repeat;
 	width: 200px;
 	height: 50px;
+}
+
+.app__header-imgDark {
+	background-image: url('./images/logoDark.png');
+	background-position: left;
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 50px;
+}
+
+.app__header__switch {
+	padding-right: 1rem !important;
 }
 
 .app__left {

@@ -5,6 +5,11 @@
 	border-radius: 20px;
 	margin-top: 16px;
 	box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+	margin-bottom: 15px;
+}
+
+.map.dark-theme {
+	background: #010b44;
 }
 
 .map .leaflet-container {
@@ -26,8 +31,16 @@
 	color: #555;
 }
 
+.info-name.dark-theme {
+	color: #bbbbbb;
+}
+
 .info-container {
 	width: 250px;
+}
+
+.info-container.dark-theme {
+	color: #bbbbbb;
 }
 
 .info-flag {
