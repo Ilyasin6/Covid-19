@@ -2,7 +2,6 @@ import React from 'react';
 import numeral from 'numeral';
 import { Circle, Popup } from 'react-leaflet';
 import LineGraph from './LineGraph';
-import CircleMap from './CircleMap';
 
 const casesTypeColors = {
 	cases: {
@@ -15,7 +14,7 @@ const casesTypeColors = {
 		hex: '#7dd71d',
 		rgb: 'rgb(125, 215, 29)',
 		half_op: 'rgba(125, 215, 29, 0.5)',
-		multiplier: 500
+		multiplier: 300
 	},
 	deaths: {
 		hex: '#fb4443',
@@ -39,16 +38,52 @@ export const sortData = (data) => {
 	return sortedData;
 };
 
+export const prettyPrintStat = (stat) =>
+
+		stat ? `${numeral(stat).format('0.0a')}` :
+		'+0';
+
 export const showDataOnMap = (data, zoom, casesType = 'cases') => {
 	return data.map((country) => {
-		console.log(country);
+		//console.log(country);
+		console.log(casesTypeColors[casesType].hex);
 		return (
-			<CircleMap
-				zoom={zoom}
-				country={country}
-				casesType={casesType}
-				casesTypeColors={casesTypeColors}
-			/>
+			<Circle
+				center={[ country.countryInfo.lat, country.countryInfo.long ]}
+				color={casesTypeColors[casesType].hex}
+				fillColor={casesTypeColors[casesType].hex}
+				fillOpacity={0.4}
+				radius={
+					Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
+				}
+			>
+				<Popup>
+					<div className="info-container">
+						<div className="info-name">
+							<div>{country.country}</div>
+							<div
+								className="info-flag"
+								style={{
+									backgroundImage: `url(${country.countryInfo.flag})`,
+									backgroundPosition: 'center'
+								}}
+							/>
+						</div>
+						<div className="info-confirmed">
+							Cases: {numeral(country.cases).format('0,0')}
+						</div>
+						<div className="info-recovered">
+							Recovered: {numeral(country.recovered).format('0,0')}
+						</div>
+						<div className="info-deaths">
+							Deaths: {numeral(country.deaths).format('0,0')}
+						</div>
+						<div>
+							<LineGraph country={country.country} />
+						</div>
+					</div>
+				</Popup>
+			</Circle>
 		);
 	});
 };

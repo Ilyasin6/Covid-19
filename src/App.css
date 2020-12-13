@@ -19,8 +19,28 @@ body {
 	justify-content: space-between;
 }
 
+.app__header-img {
+	background-image: url('./images/logo.png');
+	background-position: left;
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 50px;
+}
+
 .app__left {
 	flex: .9;
+}
+
+.app__right {
+	display: flex;
+	flex-direction: column;
+}
+
+.app__right .MuiCardContent-root {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
 }
 
 .app__stats {

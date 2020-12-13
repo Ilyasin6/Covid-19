@@ -122,13 +122,13 @@ function LineGraph({ country = 'Worldwide' }) {
 					<Select value={type} onChange={onTypeChange}>
 						<MenuItem value="cases"> Cases </MenuItem>
 						<MenuItem value="deaths"> Deaths </MenuItem>
+						<MenuItem value="recovered"> Recovered </MenuItem>
 					</Select>
 				</FormControl>
 			</div>
 
-			<div>
+			<div className="LineGraph__line">
 				<Line
-					className="LineGraph__line"
 					options={options}
 					data={{
 						datasets: [
