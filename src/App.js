@@ -125,8 +125,10 @@ function App() {
 	const onChangeTheme = () => {
 		if (theme === 'dark') {
 			setTheme('light');
+			document.querySelector('body').style.backgroundColor = '#f5f6fa';
 		} else {
 			setTheme('dark');
+			document.querySelector('body').style.backgroundColor = '#010b44e0';
 		}
 	};
 

@@ -3,17 +3,17 @@
 }
 
 body {
-	background-color: #f5f6fa;
+	background-color: #010b44e0;
 }
 
 .app {
 	display: flex;
 	justify-content: space-evenly;
 	padding: 1.2rem;
+	height: 100%;
 }
 
 .app.dark-theme {
-	background-color: #010b44e0;
 	color: white !important;
 }
 
