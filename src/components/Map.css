@@ -57,3 +57,22 @@
 	font-size: 16px;
 	margin-top: 5px;
 }
+
+.leaflet-interactive {
+	transition: all .5s;
+}
+
+.circle-deaths {
+	fill: black;
+	stroke: #222222;
+}
+
+.circle-cases {
+	stroke: rgb(204, 16, 52);
+	fill: rgb(204, 16, 52);
+}
+
+.circle-recovered {
+	stroke: #18ce18;
+	fill: lightgreen;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Circle, Popup } from 'react-leaflet';
 import numeral from 'numeral';
 import LineGraph from './LineGraph';
@@ -7,18 +7,22 @@ import styled from 'styled-components';
 const casesTypeColors = {
 	cases: {
 		hex: '#CC1034',
-		rgb: 'rgb(204, 16, 52)',
+		fill: 'rgb(204, 16, 52)',
+		stroke: 'rgb(204, 16, 52)',
 		half_op: 'rgba(204, 16, 52, 0.5)',
 		multiplier: 250
 	},
 	recovered: {
 		hex: '#7dd71d',
-		rgb: 'rgb(125, 215, 29)',
+		fill: 'lightgreen',
+		stroke: '#18ce18',
 		half_op: 'rgba(125, 215, 29, 0.5)',
 		multiplier: 300
 	},
 	deaths: {
 		hex: '#fb4443',
+		fill: ' #010b44',
+		stroke: ' #010b44',
 		rgb: 'rgb(251, 68, 67)',
 		half_op: 'rgba(251, 68, 67, 0.5)',
 		multiplier: 1000
@@ -34,15 +38,34 @@ function MapCircles({ data, casesType, theme }) {
   }
 `;
 
+	const changeColor = (fill, stroke) => {
+		const circles = document.querySelectorAll('.leaflet-interactive');
+		circles.forEach((circle) => {
+			circle.setAttribute('style', `fill: ${fill}; stroke: ${stroke}`);
+		});
+	};
+
+	useEffect(
+		() => {
+			changeColor(
+				casesTypeColors[casesType].fill,
+				casesTypeColors[casesType].stroke
+			);
+		},
+		[ casesType ]
+	);
+
 	return data.map((country, i) => {
 		//console.log(country);
 		// console.log(casesTypeColors[casesType].hex);
+
 		return (
 			<Circle
+				className={`${casesType === 'deaths' && 'circle-deaths'}`}
 				key={i}
+				color={casesTypeColors.cases.fill}
+				fillColor={casesTypeColors[casesType].fill}
 				center={[ country.countryInfo.lat, country.countryInfo.long ]}
-				color={casesTypeColors[casesType].rgb}
-				fillColor={casesTypeColors[casesType].rgb}
 				fillOpacity={0.4}
 				radius={
 					Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
