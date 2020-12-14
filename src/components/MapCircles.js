@@ -25,7 +25,7 @@ const casesTypeColors = {
 	}
 };
 
-function CircleMap({ data, casesType, theme }) {
+function MapCircles({ data, casesType, theme }) {
 	const StyledPop = styled(Popup)`
   
   .leaflet-popup-content-wrapper {
@@ -79,4 +79,4 @@ function CircleMap({ data, casesType, theme }) {
 	});
 }
 
-export default CircleMap;
+export default MapCircles;

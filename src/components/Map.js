@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 //import { showDataOnMap } from './util';
-import CircleMap from './CircleMap';
+import MapCircles from './MapCircles';
 import './Map.css';
 
 function ChangeView({ center, zoom }) {
@@ -19,7 +19,7 @@ function Map({ center, zoom, countries, casesType, theme }) {
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 				/>
-				<CircleMap data={countries} casesType={casesType} theme={theme} />
+				<MapCircles data={countries} casesType={casesType} theme={theme} />
 				{/* {showDataOnMap(countries, zoom, casesType)} */}
 			</MapContainer>
 		</div>
