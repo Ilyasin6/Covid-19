@@ -13,7 +13,7 @@ function ChangeView({ center, zoom }) {
 function Map({ center, zoom, countries, casesType, theme }) {
 	return (
 		<div className={`map ${theme === 'dark' && 'dark-theme'}`}>
-			<MapContainer center={center} zoom={zoom}>
+			<MapContainer center={center} zoom={zoom} minZoom={2}>
 				<ChangeView center={center} zoom={zoom} />
 				<TileLayer
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

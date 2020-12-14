@@ -6,6 +6,7 @@ import Select from '@material-ui/core/Select';
 import { Card, CardContent } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 
@@ -133,7 +134,7 @@ function App() {
 		<div className={`app ${theme === 'dark' && 'dark-theme'}`}>
 			<div className="app__left">
 				<div className="app__header">
-					<div className="app__header__logo" onClick={onChangeTheme}>
+					<div className="app__header__logo">
 						<div
 							className={`${(theme !== 'dark' && 'app__header-img') ||
 								(theme === 'dark' && 'app__header-imgDark')}`}
@@ -152,6 +153,7 @@ function App() {
 								/> :
 								<Brightness4Icon className={classes.switchDark} />}
 						</IconButton>
+
 						<FormControl className={classes.formControl}>
 							<Select
 								value={selectedCountry}
