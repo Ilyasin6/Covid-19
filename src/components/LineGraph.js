@@ -13,7 +13,19 @@ const useStyles = makeStyles((theme) => ({
 		minWidth: 120
 	},
 	select: {
-		color: 'white'
+		color: 'white',
+		'&:before': {
+			borderColor: 'lightgray'
+		},
+		'&:after': {
+			borderColor: 'lightgray'
+		},
+		'&:hover:not(.Mui-disabled):before': {
+			borderColor: 'lightgray'
+		}
+	},
+	icon: {
+		fill: 'lightgray'
 	}
 }));
 
@@ -110,7 +122,7 @@ function LineGraph({ country = 'Worldwide', theme }) {
 
 			fetchData();
 		},
-		[ type ]
+		[ type, country ]
 	);
 
 	const onTypeChange = (event) => {
@@ -128,6 +140,13 @@ function LineGraph({ country = 'Worldwide', theme }) {
 						value={type}
 						onChange={onTypeChange}
 						className={theme === 'dark' && classes.select}
+						inputProps={
+							theme === 'dark' && {
+								classes: {
+									icon: classes.icon
+								}
+							}
+						}
 					>
 						<MenuItem value="cases"> Cases </MenuItem>
 						<MenuItem value="deaths"> Deaths </MenuItem>

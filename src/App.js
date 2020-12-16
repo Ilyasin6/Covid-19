@@ -24,7 +24,20 @@ const useStyles = makeStyles((theme) => ({
 	},
 
 	select: {
-		color: 'lightgray'
+		color: 'lightgray',
+
+		'&:before': {
+			borderColor: 'lightgray'
+		},
+		'&:after': {
+			borderColor: 'lightgray'
+		},
+		'&:hover:not(.Mui-disabled):before': {
+			borderColor: 'lightgray'
+		}
+	},
+	icon: {
+		fill: 'lightgray'
 	},
 
 	Card: {
@@ -52,18 +65,6 @@ function App() {
 	const [ mapCountries, setMapCountries ] = useState([]);
 	const [ casesType, setCasesType ] = useState('cases');
 	const [ theme, setTheme ] = useState('dark');
-
-	// useEffect(() => {
-	// 	fetch('https://disease.sh/v3/covid-19/all')
-	// 		.then((response) => {
-	// 			console.log(response);
-	// 			response.json();
-	// 		})
-	// 		.then((data) => {
-	// 			console.log(data);
-	// 			setcountryInfo(data);
-	// 		});
-	// }, []);
 
 	useEffect(() => {
 		const getCountries = async () => {
@@ -161,6 +162,13 @@ function App() {
 								value={selectedCountry}
 								onChange={onCountryChange}
 								className={theme === 'dark' && classes.select}
+								inputProps={
+									theme === 'dark' && {
+										classes: {
+											icon: classes.icon
+										}
+									}
+								}
 							>
 								<MenuItem value="Worldwide" key={0}>
 									{' '}
