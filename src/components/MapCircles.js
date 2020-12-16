@@ -29,16 +29,6 @@ const casesTypeColors = {
   },
 };
 
-const StyledPop = styled(Popup)`
-  .leaflet-popup-content-wrapper {
-    ${(props) => {
-      if (props.theme === "dark") {
-        return "background-color: #010b44;";
-      }
-    }}
-  }
-`;
-
 function MapCircles({ data, casesType, theme }) {
   const StyledPop = styled(Popup)`
     .leaflet-popup-content-wrapper {
